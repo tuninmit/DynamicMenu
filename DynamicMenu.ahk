@@ -1,6 +1,7 @@
 ﻿#Requires AutoHotkey v2.0
 #SingleInstance
 #Include ./class/MenuProccessor.ahk
+#Include ./class/ClipboardProcessor.ahk
 #Include ./class/ItemMenu.ahk
 #Include ./module/Onelink.ahk
 
