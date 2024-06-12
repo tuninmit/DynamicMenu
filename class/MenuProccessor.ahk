@@ -39,12 +39,13 @@ class MenuProccessor{
         displayItems := Array()
         For i, item in this.items
         {
-            if WinActive(item.winTitle)
+            if ((item.winTitle = '') || WinActive(item.winTitle))
                 displayItems.Push(item)
         }
     
         ; Creates the menu:
         MyMenu := Menu()
+        MyMenu.customHandler := Map()
         For i, item in displayItems{
 
 
@@ -57,7 +58,7 @@ class MenuProccessor{
                     MyMenu.Add(item.text, defaultHandler)
                 }
                 
-                MyMenu.customHandler := item.handler
+                MyMenu.customHandler.Set(item.text, item.handler)
                 MyMenu.winTitle := item.winTitle
                 if(item.isEnable = false){
                     MyMenu.Disable(item.text)
@@ -67,11 +68,6 @@ class MenuProccessor{
         
         MyMenu.Show()
     }
-
-
-    ; WinActivate(selectedItem.winTitle)
-    ; %selectedItem.handler%()
-
 }
 
 defaultHandler(itemName, itemPos, menuAhk){
@@ -79,14 +75,28 @@ defaultHandler(itemName, itemPos, menuAhk){
     patchs := StrSplit(handler, MenuProccessor.PARAM_DELIMITER)
     function := patchs[1]
 
-    WinActivate(menuAhk.winTitle)
-    switch function, false {
-        case "Send":
-            Send(patchs[2])
+    if (menuAhk.winTitle != '')
+        WinActivate(menuAhk.winTitle)
+    else
+        Sleep(100)
+
+    
+    switch patchs.Length {
+        case 1:
+            dummyFunction := %function%.Bind()
+        case 2:
+            dummyFunction := %function%.Bind(patchs[2])
+        case 3:
+            dummyFunction := %function%.Bind(patchs[2], patchs[3])
+        case 4:
+            dummyFunction := %function%.Bind(patchs[2], patchs[3], patchs[4])
         default:
-            ToolTip('TBD')
+            dummyFunction := ObjBindMethod(ClipboardProcessor, 'flashToolTip', function)
     }
+    dummyFunction()
 }
+
+
 
 
 

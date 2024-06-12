@@ -4,6 +4,7 @@
 #Include ./class/ClipboardProcessor.ahk
 #Include ./class/ItemMenu.ahk
 #Include ./module/Onelink.ahk
+#Include ./module/Ooe.ahk
 
 ; ToolTip Mouse Menu (based on the v1 script by Rajat)
 ; https://www.autohotkey.com
@@ -17,6 +18,8 @@
 ;_____Menu Definitions______________________
 ; Create Menu Items here.
 MenuProccessor.rootItems.Push(OneLinkItem)
+MenuProccessor.rootItems.Push(QoeItem)
+MenuProccessor.rootItems.Push(ClipboardProcessor.memoryMenuItem)
 ;___________________________________________
 
 Exit
