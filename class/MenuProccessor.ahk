@@ -9,6 +9,8 @@ class MenuProccessor{
     static rootItems := Array()
     static items := Array()
 
+    static currentWindow_id := unset
+
     static mouseCallMenu(){
         iss := this.isMouseClickLongEnough()
         if (iss)
@@ -66,6 +68,8 @@ class MenuProccessor{
             }
         }
         
+        this.currentWindow_id := WinExist("A")  ;"A" mean current active window. See https://www.autohotkey.com/docs/v2/misc/WinTitle.htm#ActiveWindow
+        WinActivate(A_ScriptHwnd)
         MyMenu.Show()
     }
 }
@@ -78,7 +82,7 @@ defaultHandler(itemName, itemPos, menuAhk){
     if (menuAhk.winTitle != '')
         WinActivate(menuAhk.winTitle)
     else
-        Sleep(100)
+        WinActivate(Integer(MenuProccessor.currentWindow_id))
 
     
     switch patchs.Length {
