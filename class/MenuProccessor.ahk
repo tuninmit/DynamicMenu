@@ -76,6 +76,7 @@ class MenuProccessor{
 
 defaultHandler(itemName, itemPos, menuAhk){
     handler := menuAhk.customHandler.Get(itemName)
+    handler := ClipboardProcessor.fillParamInto(handler)
     patchs := StrSplit(handler, MenuProccessor.PARAM_DELIMITER)
     function := patchs[1]
 

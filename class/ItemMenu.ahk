@@ -2,6 +2,9 @@
 
 
 class ItemMenu{
+    static SPLIT := '|'
+    static SPLIT_ALTERNATIVE := '\_/'   ;if handler uses SPLIT character, write SPLIT_ALTERNATIVE instead. Example: "hays | grep needle" will become "hays \_/ grep needle"
+
     text := ''
     winTitle := ''
     handler := ''
@@ -15,7 +18,7 @@ class ItemMenu{
     __New(text, winTitle, handler) {
         this.text := text
         this.winTitle := winTitle
-        this.handler := handler
+        this.handler := StrReplace(handler, ItemMenu.SPLIT_ALTERNATIVE, ItemMenu.SPLIT)
     }
 
     toMenu(defaultHandler){
@@ -45,7 +48,7 @@ class ItemMenu{
     }
 
     static parseFromString(raw, isEnable := true, isBreakNewColumn := false){
-        patchs := StrSplit(raw, "|")
+        patchs := StrSplit(raw, ItemMenu.SPLIT)
         try {
             newItem := ItemMenu(patchs[1], patchs[2], patchs[3])
             newItem.isEnable := isEnable

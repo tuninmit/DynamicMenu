@@ -25,6 +25,7 @@ class ClipboardProcessor {
         ;---DEFINE MEMORY PATTERN HERE---
         ; this.collect('something', 'someRegexPattern')
         this.collect('serialNumber', '^(VNPT|ALCL|DSNW|ZTEG)[\w]{8}$')
+        this.collect('modelName', '(^H646GM-V$)|(^XS-2426G-A$)|^(GW|XSW)([0-9]{3})([-_]?)(I|E|HS|H|M|NS|N|\d{4})?$')
     }
 
 
@@ -60,7 +61,22 @@ class ClipboardProcessor {
         this.memoryMenuItem.setChild(childs)
     }
 
+    static fillParamInto(text){
+        if (InStr(text, '{{') = 0)
+            return text
 
+        cloneText := text
+        for k,v in this.memories {
+            target := '{{' . k . '}}'
+
+            if (InStr(text, target) > 0) 
+                cloneText := StrReplace(cloneText, target, v)
+        }
+
+        ;TODO: Should params, which are not filled yet, replaced with 1 space
+
+        return cloneText
+    }
 
 }
 
