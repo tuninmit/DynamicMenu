@@ -1,0 +1,5 @@
+number=^\d+(\.)?\d*$
+contain_cat_or_dog=cat|dog
+
+serialNumber=^(VNPT|ALCL|DSNW|ZTEG)[\w]{8}$
+modelName=(^H646GM-V$)|(^XS-2426G-A$)|^(GW|XSW)([0-9]{3})([-_]?)(I|E|HS|H|M|NS|N|\d{4})?$

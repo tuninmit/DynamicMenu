@@ -1,10 +1,11 @@
 ﻿#Requires AutoHotkey v2.0
 #SingleInstance
+#Include libs/autoreload-on-save.ahk
+
 #Include ./class/MenuProccessor.ahk
 #Include ./class/ClipboardProcessor.ahk
 #Include ./class/ItemMenu.ahk
-#Include ./module/Onelink.ahk
-#Include ./module/Ooe.ahk
+#Include ./class/SimpleParser.ahk
 
 ; ToolTip Mouse Menu (based on the v1 script by Rajat)
 ; https://www.autohotkey.com
@@ -17,18 +18,14 @@
 ;___________________________________________
 ;_____Menu Definitions______________________
 ; Create Menu Items here.
-MenuProccessor.rootItems.Push(OneLinkItem)
-MenuProccessor.rootItems.Push(QoeItem)
 MenuProccessor.rootItems.Push(ClipboardProcessor.memoryMenuItem)
+
+MenuProccessor.rootItems.Push(SimpleParser.items*)
 ;___________________________________________
 
 Exit
 
 
-;___________________________________________
-;_____Menu Sections_________________________
-
-; Create / Edit Menu Sections here.
 
 
 

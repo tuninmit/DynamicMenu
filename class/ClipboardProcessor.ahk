@@ -8,12 +8,14 @@
 class ClipboardProcessor {
 
     static memories := Map()
+    static patterns := Map()
     static memoryMenuItem := unset
 
     static __New() {
         OnClipboardChange(ClipboardProcessor.onClipChanged)
+        this.parseFileMemoryPattern()
 
-        this.memoryMenuItem := ItemMenu.parseFromString("Memory||.", false)
+        this.memoryMenuItem := ItemMenu.parseFromString("Memory~~.", false)
         this.memoryMenuItem.childs := Array()
     }
 
@@ -22,19 +24,19 @@ class ClipboardProcessor {
         if (dataType != 1) ;ignore non-text data
             return
         
-        ;---DEFINE MEMORY PATTERN HERE---
-        ; this.collect('something', 'someRegexPattern')
-        this.collect('serialNumber', '^(VNPT|ALCL|DSNW|ZTEG)[\w]{8}$')
-        this.collect('modelName', '(^H646GM-V$)|(^XS-2426G-A$)|^(GW|XSW)([0-9]{3})([-_]?)(I|E|HS|H|M|NS|N|\d{4})?$')
+        ;---DEFINE MEMORY PATTERN IN memoryPattern.txt---
+        for memoryKey, regex in this.patterns{
+            this.collect(memoryKey, regex)
+        }
     }
 
 
     static collect(memoryKey, regex){
-        raw := A_Clipboard
+        value := A_Clipboard
 
-        if(RegExMatch(raw, regex) != 0){
-            this.memories.Set(memoryKey, raw)
-            this.flashToolTip(raw)
+        if(RegExMatch(value, regex) != 0){
+            this.memories.Set(memoryKey, value)
+            this.flashToolTip(value)
             this.buildChildItemMenu()
         }
     }
@@ -52,9 +54,9 @@ class ClipboardProcessor {
         this.memoryMenuItem.isEnable := (this.memories.Count > 0)
 
         childs := Array()
-        for mem, value in this.memories {
-            itemMenu1 := ItemMenu.parseFromString(mem . '||Send###' . value)
-            itemMenu1.text := mem . ' - ' . value
+        for memoryKey, value in this.memories {
+            itemMenu1 := ItemMenu.parseFromString(memoryKey . '~~Send###' . value)
+            itemMenu1.text := memoryKey . ' - ' . value
             childs.Push(itemMenu1)
         }
 
@@ -78,5 +80,15 @@ class ClipboardProcessor {
         return cloneText
     }
 
+    static fileLocation := "memoryPattern.txt"
+    static parseFileMemoryPattern(){
+        Loop read, this.fileLocation {
+            Loop parse, A_LoopReadLine {
+                patchs := StrSplit(A_LoopReadLine, "=", unset, 2)
+                this.patterns.Set(patchs[1], patchs[2])
+            }
+        }else
+            MsgBox(this.fileLocation . " not found.")
+    }
 }
 

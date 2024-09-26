@@ -2,8 +2,8 @@
 
 
 class ItemMenu{
-    static SPLIT := '|'
-    static SPLIT_ALTERNATIVE := '\_/'   ;if handler uses SPLIT character, write SPLIT_ALTERNATIVE instead. Example: "hays | grep needle" will become "hays \_/ grep needle"
+    static SPLIT := '~'
+    static SPLIT_ALTERNATIVE := '/\/'   ;if handler uses SPLIT character, write SPLIT_ALTERNATIVE instead. Example: "hays ~ grep needle" need wrote as "hays /\/ grep needle"
 
     text := ''
     winTitle := ''

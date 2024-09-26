@@ -1,0 +1,16 @@
+Example
+    template command {{number}}
+
+10.15.199.17
+    tail -1000f /opt/one/logs/apigw.log `n hehe
+    tail -1000f /opt/one/logs/device-service.log
+
+10.15.12.214
+    tail -1000f /root/gpon-acs-server/log/full.log `n hehe
+    tail -1000f /root/gpon-gateway/log/full.log
+    | grep {{serialNumber}}
+    
+    service acs restart
+    service gateway restart
+    rm /root/gpon-gateway/webapps/nms/WEB-INF/lib/javax.ws.rs-api-2.0-m10.jar
+

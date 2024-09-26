@@ -3,8 +3,8 @@
 
 class MenuProccessor{
 
-    static MOUSE_DELAY := 10                    ; This is how long the mouse button must be held to cause the menu to appear
-    static PARAM_DELIMITER := '###'
+    static MOUSE_DELAY := 15                    ; This is how long the mouse button must be held to cause the menu to appear
+    static PARAM_DELIMITER := '###'             ;"SendText###LookToTheMoon###3" will become function call SendText("LookToTheMoon", "3")
 
     static rootItems := Array()
     static items := Array()
