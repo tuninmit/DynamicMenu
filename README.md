@@ -3,8 +3,7 @@ Customizable context **Menu** based on activating window. Items to be shown are 
 
 # Features
 * Allows you to define snippets of text that can be recall in particular application (based on window tittle)
-* Save clipboard if it matches any regex you setup in ```memoryPattern.txt```
-* Trigger **Menu** by holding middle mouse for a short time
+* Save clipboard if it matches any regex you setup in ```memoryPattern.txt```. Recall from **Memory** option in **Menu**
 
 # Installation
 1. Install AutoHotKey from [https://www.autohotkey.com](https://www.autohotkey.com) (v2 is required)
@@ -12,6 +11,9 @@ Customizable context **Menu** based on activating window. Items to be shown are 
 3. (Optional) Put a SHORTCUT of `DynamicMenu.ahk` in startup folder, then script will auto run on window startup
 
    Just in case, in order to open startup folder quickly, press `Window + R`, then enter `shell:startup`
+
+# Usage
+Trigger **Menu** by holding middle mouse for a short time, then select an item to send text
 
 ## Customize script
 * `myCommand.txt` 
@@ -25,7 +27,7 @@ Customizable context **Menu** based on activating window. Items to be shown are 
   ```
    Here we have `{{number}}` placeholder, it will be replaced if **Memory** had value in slot `number`
 
-* `memoryPattern.txt` Recall from **Memory** option in **Menu**
+* `memoryPattern.txt`
    ```
    keyName=Regex
    number=^\d+(\.)?\d*$
