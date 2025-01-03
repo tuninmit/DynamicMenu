@@ -13,25 +13,29 @@ class SimpleParser{
 
     static parseFile(){
         Loop read, this.fileLocation {
-            Loop parse, A_LoopReadLine {
-                this.parseLine(A_LoopReadLine)
-            }
+            this.parseLine(A_LoopReadLine)
         }else
             MsgBox(this.fileLocation . " not found.")
     }
 
     static currentWinTitle := ""
+    static emptyOption := " "
     static parseLine(line){
+        if(StrLen(line) = 0)
+            return
+
         ;save line as window title
         if (InStr(line, "    ") = 0){
             this.currentWinTitle := line
+            this.emptyOption := " "
             return
         }
 
         ;or else that line is an ItemMenu
         line := LTrim(line)
         if(StrLen(line) = 0){
-            line := " " ;indent-empty line in myCommand.txt considered as empty menu option 
+            line := this.emptyOption                    ;indent-empty line in myCommand.txt considered as empty menu option 
+            this.emptyOption := this.emptyOption . " "  ;empty options need to be different from each other
         } 
         item := ItemMenu(line, this.currentWinTitle, "SendText###" . line)
         this.items.Push(item)
