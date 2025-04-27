@@ -4,66 +4,17 @@ Example
 <empty line will be skip>
 
 ========================================================================================================================
+
+Notepad
+    Hello there!
+    I often use this tool to type frequently used command line
+    Hope this piece of code helpful for u
+
 10.15.199.17
     tail -1000f /opt/one/logs/apigw.log
     tail -1000f /opt/one/logs/device-service.log
+    | grep {{serialNumber}}
     
     mv  /opt/one/src/apigw/apigw-56.jar /opt/one/src/apigw/apigw.jar.bak2025
     cp -r /home/ubuntu/apigw-0.0.1-SNAPSHOT.jar /opt/one/src/apigw/apigw-56.jar
     service one-link-apigw restart
-    
-    mv  /opt/one/src/authen-service/authen-service-5.jar  /opt/one/src/authewfn-service/authen-service-5.jar.bak2025
-    cp -r /home/ubuntu/authen-service-0.0.1-SNAPSHOT.jar /opt/one/src/authen-service/authen-service-5.jar
-    service authen-service restart
-    
-    mv  /opt/one/src/device-service/device-service-21.jar /opt/one/src/device-service/device-service.jar.bak2025
-    cp -r /home/ubuntu/device-service-0.0.1-SNAPSHOT.jar /opt/one/src/device-service/device-service-21.jar
-    service device-service restart
-
-
-OL Production Core
-    tail -1000f /opt/one/logs/device-service.log
-    | grep {{serialNumber}}
-    
-    mv  /opt/one/src/device-service/device-service.jar /opt/one/src/device-service/device-service.jar.bak2025
-    cp -r /home/vnpt/device-service-0.0.1-SNAPSHOT.jar /opt/one/src/device-service/device-service.jar
-    chown one:one -R /opt/one/src/device-service/device-service.jar
-    service device-service restart
-
-
-10.15.12.214
-    tail -1000f /root/gpon-acs-server/log/full.log
-    tail -1000f /root/gpon-gateway/log/full.log
-    | grep {{serialNumber}}
-    
-    service acs restart
-    service gateway restart
-    rm /root/gpon-gateway/webapps/nms/WEB-INF/lib/javax.ws.rs-api-2.0-m10.jar
-
-
-api - 0
-    tail -100f /opt/oss/logs/cpe-api-gw.log
-    service cpe-api-gw restart
-
-api - 01
-    tail -100f /opt/oss/logs/cpe-api-gw.log
-    
-    mv /opt/oss/src/cpe-api-gw/cpe-api-gw.jar /opt/oss/src/cpe-api-gw/cpe-api-gw.jar.bak2025
-    mv /opt/oss/src/cpe-api-gw/cpe-apigw-0.0.1-SNAPSHOT.jar /opt/oss/src/cpe-api-gw/cpe-api-gw.jar
-    
-    scp /opt/oss/src/cpe-api-gw/cpe-api-gw.jar root@10.165.61.40:/opt/oss/src/cpe-api-gw
-    scp /opt/oss/src/cpe-api-gw/cpe-api-gw.jar root@10.165.61.41:/opt/oss/src/cpe-api-gw
-    scp /opt/oss/src/cpe-api-gw/cpe-api-gw.jar root@10.165.61.42:/opt/oss/src/cpe-api-gw
-
-
-core0
-    tail -100f /opt/oss/logs/cpe-service-tr069.log
-    service cpe-service-tr069 restart
-
-core01
-    mv /opt/oss/src/cpe-service-tr069/cpe-service-tr069.jar /opt/oss/src/cpe-service-tr069/cpe-service-tr069.jar.bak2025
-    mv /opt/oss/src/cpe-service-tr069/cpe-service-tr069-0.0.1-SNAPSHOT.jar /opt/oss/src/cpe-service-tr069/cpe-service-tr069.jar
-    
-    scp /opt/oss/src/cpe-service-tr069/cpe-service-tr069.jar root@10.165.61.56:/opt/oss/src/cpe-service-tr069
-    scp /opt/oss/src/cpe-service-tr069/cpe-service-tr069.jar root@10.165.61.57:/opt/oss/src/cpe-service-tr069
-    scp /opt/oss/src/cpe-service-tr069/cpe-service-tr069.jar root@10.165.61.58:/opt/oss/src/cpe-service-tr069
