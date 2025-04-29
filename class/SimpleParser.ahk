@@ -33,6 +33,8 @@ class SimpleParser{
 
         ;or else that line is an ItemMenu
         line := LTrim(line)
+        line := StrReplace(line, '\n', CHR(10))
+        line := StrReplace(line, '``n', CHR(10))
         if(StrLen(line) = 0){
             line := this.emptyOption                    ;indent-empty line in myCommand.txt considered as empty menu option 
             this.emptyOption := this.emptyOption . " "  ;empty options need to be different from each other
