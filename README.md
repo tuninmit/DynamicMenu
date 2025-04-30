@@ -16,14 +16,16 @@ Customizable context **Menu** based on activating window. Items to be shown are 
 Trigger **Menu** by holding middle mouse for a short time, then select an item to send text
 
 ## Customize script
-* `myCommand.txt` 
+Save file after changed, then reload the script
+* `myCommand.txt`
+  
   ```
   Window tittle contains this text
-      Snippet of text that are so long to remember or we are too lazy to type manually 1
-      Snippet of text that are so long to remember or we are too lazy to type manually 2
-      
+      Snippets of text that are so long to remember or we are too lazy to type manually 1
+      Snippets of text have many line\nLine 1\nLine 2`nFinal line
+
   Notepad
-      Today I got emootional damage, cannot go to work in {{number}}
+      Today I got emootional damage, cannot go to work in {{number}} day
   ```
    Here we have `{{number}}` placeholder, it will be replaced if **Memory** had value in slot `number`
 
