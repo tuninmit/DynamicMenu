@@ -10,6 +10,7 @@ Notepad
     I often use this tool to type frequently used command line
     Hope this piece of code helpful for u
 
+
 10.15.199.17
     tail -1000f /opt/one/logs/apigw.log
     tail -1000f /opt/one/logs/device-service.log
@@ -18,3 +19,9 @@ Notepad
     mv  /opt/one/src/apigw/apigw-56.jar /opt/one/src/apigw/apigw.jar.bak2025
     cp -r /home/ubuntu/apigw-0.0.1-SNAPSHOT.jar /opt/one/src/apigw/apigw-56.jar
     service one-link-apigw restart
+
+
+ahk_exe Telegram.exe
+    display on matched ahk_exe
+    will work based on specific application
+
