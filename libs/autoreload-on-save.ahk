@@ -4,7 +4,7 @@
 
 
 ; Autoreload on saving when using VSCode and is not compiled (executable)
-#HotIf WinActive("Visual Studio Code") and !A_IsCompiled
+#HotIf WinActive("Visual Studio Code") or WinActive("myCommand.txt") or WinActive("memoryPattern.txt") and !A_IsCompiled
 ~^s:: Reload
 #HotIf
 
