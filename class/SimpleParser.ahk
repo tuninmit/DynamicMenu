@@ -35,12 +35,28 @@ class SimpleParser{
         line := LTrim(line)
         line := StrReplace(line, '\n', CHR(10))
         line := StrReplace(line, '``n', CHR(10))
+
         if(StrLen(line) = 0){
             line := this.emptyOption                    ;indent-empty line in myCommand.txt considered as empty menu option 
             this.emptyOption := this.emptyOption . " "  ;empty options need to be different from each other
-        } 
-        item := ItemMenu(line, this.currentWinTitle, "SendText###" . line)
+
+        }
+
+        function := this.parseFunction(line)
+
+        item := ItemMenu(line, this.currentWinTitle, function)
         this.items.Push(item)
+    }
+
+    static SendText_function := "SendText###"
+    static parseFunction(line){
+        function := line
+
+        if (Trim(line) != "") && !InStr(line, "###"){
+            function := "SendText###" . line
+        }
+
+        return function
     }
 
 }
