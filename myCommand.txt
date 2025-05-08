@@ -24,4 +24,5 @@ Notepad
 ahk_exe Telegram.exe
     display on matched ahk_exe
     will work based on specific application
+    Send###Line+{Enter}Break+`nIn Telegram
 
